@@ -1,0 +1,33 @@
+<style>
+  .radioOptions{
+    position: absolute;
+    top: 0;left: 0;right: 0;bottom: 0;
+    width: 250px;
+    height: 30px;
+    margin: auto;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  .radioOptions .caret {
+    position:absolute;right:8px;top:14px
+  }
+  .radioOptions ul {
+    padding: 0;
+    height: 400px;
+    overflow-y: auto;
+  }
+</style>
+<div class="btn-group relative radioOptions">
+  <button type="button" class="dropdown-toggle form-control relative text-left" style="width: 100%;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span ng-if="field.value">{{field.value}}</span>
+    <span ng-if="!field.value">-</span>
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu list-group" style="width: 100%;">
+    <li class="list-group-item" ng-if="field.openSearch" ng-click="$event.stopPropagation()">
+      <input type="text" class="form-control" ng-keyup="dropdownRadioSearch($event,field.options);" placeholder="输入关键字搜索">
+    </li>
+    <li class="list-group-item cursorhand" ng-click="chooseDropdownRadio(field,option);" ng-repeat="option in (field.options)"><span ng-bind="option.value"></span></li>
+  </ul>
+</div>

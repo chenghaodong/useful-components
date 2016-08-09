@@ -1,0 +1,56 @@
+<style>
+    .wrap{
+        position: absolute;
+        top: 0;left: 0;right: 0;bottom: 0;
+        width: 120px;
+        height: 30px;
+        margin: auto;
+        display: inline-block;
+        cursor: pointer;
+        font-size: 14px;
+    }
+    .btn-list{
+        width: 120px;
+        height: 30px;
+        line-height: 30px;
+        border-radius: 10px;
+        background: #eeeeee;
+        position: relative;
+        box-sizing: border-box;
+        padding: 0 10px;
+        color: #00b3ee;
+    }
+    .btn-list-border{
+        position: absolute;
+        width: 0;
+        height: 32px;
+        top: 0;
+        left: 0;
+        border-radius: 10px;
+        transition: .5s;
+        visibility: hidden;
+        overflow: hidden;
+    }
+    .border-inner{
+        border: 1px solid #00b3ee;
+        width: 120px;
+        height: 30px;
+        border-radius: 10px;
+    }
+    .wrap:hover .btn-list{
+        color: #ffffff;
+    }
+    .wrap:hover .btn-list-border{
+        visibility:visible;
+        width: 122px;
+    }
+</style>
+<div class="wrap">
+    <button type="button" class="btn btn-list">
+        单选下拉搜索框
+    </button>
+    <div ng-click="radioOptions();"  class="btn-list-border">
+        <div class="border-inner">
+        </div>
+    </div>
+</div>
