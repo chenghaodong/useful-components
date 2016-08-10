@@ -1,0 +1,57 @@
+<style>
+  .multi-options {
+    position: absolute;
+    top: 0;left: 0;right: 0;bottom: 0;
+    width: 250px;
+    height: 30px;
+    margin: auto;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  .word-break {
+    height: auto;
+    min-height: 34px;
+  }
+  .word-break .caret {
+    position:absolute;
+    right:8px;
+    top:14px
+  }
+  .word-break .clear{
+    position:absolute;
+    right:8px;
+    top:5px
+  }
+  .multi-options ul {
+    padding: 0;
+    height: 400px;
+    overflow: auto;
+  }
+  .btn-redis20px {
+    padding: 5px 30px ;
+    border-radius: 20px;
+  }
+  .btn-redis20px:focus ,.btn-redis20px:active, .btn-redis20px:active:focus{
+    outline: none;
+  }
+</style>
+<div class="btn-group relative multi-options">
+  <button type="button" class="dropdown-toggle word-break form-control text-left" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span ng-if="field.value" style="word-break: break-all;">{{field.value}}</span>
+    <span ng-if="!field.value">--请选择--</span>
+    <span ng-if="!catSelected" class="caret"></span>
+    <span ng-click="clear()" ng-if="catSelected" class="clear">&times;</span>
+  </button>
+  <ul class="list-group dropdown-menu form-control" role="menu" style="padding: 0;height: auto;max-height: 330px;overflow: auto;">
+    <li ng-if="field.openSearch" class="list-group-item" ng-click="$event.stopPropagation()">
+      <input type="text" class="form-control" ng-keyup="dropdownMultiselectSearch($event,field.options);" placeholder="输入关键字搜索">
+    </li>
+    <li  class="list-group-item" ng-repeat="option in field.options" style="padding: 5px 15px;" ng-click="$event.stopPropagation()">
+      <label style="width: 100%;cursor: pointer"><input type="checkbox" ng-model="option.selectValue" ng-click="selected($event,option)" style="margin-right: 10px;position: relative;top: 3px"/><span ng-bind="option.value" style="font-weight: normal"></span></label>
+    </li>
+    <li class="list-group-item text-center">
+      <button type="button" class="btn btn-info btn-redis20px" ng-click="update()">确 定</button>
+    </li>
+  </ul>
+</div>
